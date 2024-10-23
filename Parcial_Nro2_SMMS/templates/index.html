@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+
+    <style>
+        body{
+            min-height: 100vh;
+            background: linear-gradient(#3f32b7, #832465)
+
+        }
+        table{
+            margin: 0 auto;
+        }
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            padding: 10px;
+            text-align: center;
+        }
+        td{
+            background-color: rgb(181, 243, 222);
+        }
+        th{
+            background-color: rgba(0, 204, 255, 0.993);
+        }
+        h1{
+            text-align: center;
+        }
+        a{
+            text-align: center;
+            color: rgb(247, 32, 61); 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GESTIÓN DE PRODUCTOS</h1>
+    <a href="{{ url_for('nuevo')}}">NUEVO PRODUCTO</a>
+    <br> <br>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CANTIDAD</th>
+            <th>PRECIO</th>
+            <th>FECHA_VENCIMIENTO</th>
+            <th>CATEGORIA</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {% for item in productos %}
+
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.precio}}</td>
+            <td>{{item.fecha_vencimiento}}</td>
+            <td>{{item.categoria}}</td>
+            <td><a href="{{url_for('editar', id=item.id)}}">Editar</a></td>
+            <td>
+                <form action="{{url_for('eliminar', id=item.id)}}" method="POST">
+                    <input type="submit" value="eliminar">
+                </form>
+            </td>
+        </tr>
+
+        {% endfor%}
+    </table>
+</body>
+</html>

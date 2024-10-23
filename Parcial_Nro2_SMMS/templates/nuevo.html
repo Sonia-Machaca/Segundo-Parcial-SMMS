@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Producto</title>
+
+    <style>
+        body{
+            min-height: 100vh;
+            background: linear-gradient(#3f32b7, #832465)
+
+        }
+        form{
+            padding: 50px 55px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.637);
+            border-radius: 30px;
+            width: 400px;
+            margin: 0 auto;
+            font-family: Arial;
+            font-size: 18px;
+            font-weight: 550;
+        }
+        h1{
+            text-align: center;
+        }
+        input, textarea{
+            padding: 5px 13px;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>NUEVO PRODUCTO</h1>
+
+    <form action="{{ url_for('nuevo')}}" method="POST">
+
+        Nombre: <input type="text" name="nombre" required> <br> <br>
+        Cantidad: <input type="text" name="cantidad" required> <br> <br>
+        Precio: <input type="text" name="precio" required> <br> <br>
+        Fecha_vencimiento: <input type="text" name="fecha_vencimiento" required> <br> <br>
+        Categoria: <input type="text" name="categoria" required> <br> <br>
+        <input type="submit">
+
+    </form>
+</body>
+</html>
